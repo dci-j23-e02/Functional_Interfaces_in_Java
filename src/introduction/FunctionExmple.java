@@ -1,5 +1,6 @@
 package introduction;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class FunctionExmple {
     EmailService es = new EmailService();
 
     // Combine the functions to send out invitations
-    users.stream()
+    List<String> emails = users.stream()
         .map(
             user -> {
               String emailAddress  = extractEmail.apply(user);
@@ -53,6 +54,6 @@ public class FunctionExmple {
         )
         .collect(Collectors.toList());
 
-    System.out.println("Invitations sent to all users.");
+    System.out.println("Invitations sent to :"+ emails);
   }
 }
