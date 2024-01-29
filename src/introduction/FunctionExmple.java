@@ -33,9 +33,9 @@ public class FunctionExmple {
           // System.out.println(value);
     // Function to create invitation message
     Function<User, String> createInvitation = user -> {
-      String userName = user.getName();
-      String message = "Dear "+userName+",\n You atre invited to our conference.";
-      return message;
+       String message = "Dear %s,\nWe are pleased to invite you to the Java Developer Conference 2024."+
+          "\nYour participation is greatly anticipated!\nBest Regards,\nJava Conference Organizers";
+      return String.format(message, user.getName());
     };
 
     // Instance of EmailService
@@ -45,10 +45,10 @@ public class FunctionExmple {
     users.stream()
         .map(
             user -> {
-              String email  = extractEmail.apply(user);
+              String emailAddress  = extractEmail.apply(user);
               String invitation = createInvitation.apply(user);
-              es.sendEmail(email, invitation); // Use Email Service to send the email
-              return  email;
+              es.sendEmail(emailAddress, invitation); // Use Email Service to send the email
+              return  emailAddress;
             }
         )
         .collect(Collectors.toList());
