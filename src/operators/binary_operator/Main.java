@@ -13,9 +13,11 @@ public class Main {
 
     System.out.println("Enter the first list of integers (comma-separated):");
     List<Integer> list1 = readList(scanner);
+    System.out.println("list1: "+list1);
 
     System.out.println("Enter the second list of integers (comma-separated):");
     List<Integer> list2 = readList(scanner);
+    System.out.println("list2: "+list2);
 
     List<Integer> mergedList = listMerger.merge(list1, list2);
 
